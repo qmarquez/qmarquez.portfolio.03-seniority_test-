@@ -1,0 +1,15 @@
+version: "3"
+
+services: 
+  dummy_mailer:
+    build: .
+    ports: 
+      - "3000:3000"
+      - "4200:4200"
+    command: ["npm", "run", "dev"]
+    volumes: 
+      - ".:/app/dummy_mailer"
+      - "node_modules:/app/dummy_mailer/node_modules"
+
+volumes: 
+  node_modules:
