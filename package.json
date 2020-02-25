@@ -24,8 +24,10 @@
     "@nebular/theme": "^4.6.0",
     "@ngrx/store": "^8.6.0",
     "eva-icons": "^1.1.2",
+    "express": "^4.17.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "url-join": "^4.0.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
