@@ -1,0 +1,25 @@
+<div class="login-container">
+  <form class="login-form"
+        [formGroup]="loginForm"
+        autocomplete="off">
+    <nb-card>
+      <nb-card-header>Login</nb-card-header>
+      <nb-card-body>
+        <input type="text"
+               nbInput
+               fullWidth
+               placeholder="email"
+               formControlName="email">
+        <input type="password"
+               nbInput
+               fullWidth
+               placeholder="password"
+               formControlName="password">
+      </nb-card-body>
+      <nb-card-footer>
+        <button nbButton
+                status="primary">Login</button>
+      </nb-card-footer>
+    </nb-card>
+  </form>
+</div>

@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NebularModule } from './nebular.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IsLoggedInGuard } from './guards/is_logged_in.guard';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { NebularModule } from './nebular.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -34,7 +37,9 @@ import { NebularModule } from './nebular.module';
     NbEvaIconsModule,
     NebularModule
   ],
-  providers: [],
+  providers: [
+    IsLoggedInGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
