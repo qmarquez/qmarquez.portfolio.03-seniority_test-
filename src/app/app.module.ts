@@ -13,6 +13,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NebularModule } from './nebular.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsLoggedInGuard } from './guards/is_logged_in.guard';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { IsLoggedInGuard } from './guards/is_logged_in.guard';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -38,6 +41,7 @@ import { IsLoggedInGuard } from './guards/is_logged_in.guard';
     NebularModule
   ],
   providers: [
+    AuthService,
     IsLoggedInGuard
   ],
   bootstrap: [AppComponent]
