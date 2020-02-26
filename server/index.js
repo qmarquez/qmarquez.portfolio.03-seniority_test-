@@ -5,7 +5,7 @@ const app = express();
 const router = express.Router();
 const publicPath = path.join(__dirname, "..", "public");
 
-router.post('/auth', (req, res) => {
+router.post('/auth/signin', (req, res) => {
   const { email, password } = req.body;
 
   const emailValidate = email === 'user@vi-datec.com';
@@ -20,7 +20,7 @@ router.post('/auth', (req, res) => {
     return res.sendStatus(401);
   }
 
-  return res.sendStatus(200);
+  return res.status(200).send({ isLogged: true });
 });
 
 app.use(express.json());

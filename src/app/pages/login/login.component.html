@@ -1,20 +1,25 @@
 <div class="login-container">
   <form class="login-form"
-        [formGroup]="loginForm"
-        autocomplete="off">
+        (ngSubmit)="doLogin()"
+        [formGroup]="loginForm">
     <nb-card>
       <nb-card-header>Login</nb-card-header>
       <nb-card-body>
         <input type="text"
+               required
                nbInput
                fullWidth
                placeholder="email"
                formControlName="email">
         <input type="password"
+               required
                nbInput
                fullWidth
                placeholder="password"
                formControlName="password">
+        <ng-container *ngIf="error">
+          <div>{{error | async}}</div>
+        </ng-container>
       </nb-card-body>
       <nb-card-footer>
         <button nbButton

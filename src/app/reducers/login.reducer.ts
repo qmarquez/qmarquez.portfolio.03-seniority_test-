@@ -4,18 +4,18 @@ import { loginSuccess, loginError, logout } from '../actions/login.actions';
 export interface loginInterface {
   userEmail: string,
   error: string,
-  isLoggedIn: boolean
+  isLogged: boolean
 }
 
 const initialState: loginInterface = {
   userEmail: '',
   error: '',
-  isLoggedIn: false
+  isLogged: false
 }
 
 const _loginReducer = createReducer(
   initialState,
-  on(loginSuccess, (state, { email }) => ({ ...state, userEmail: email })),
+  on(loginSuccess, (state, { email }) => ({ ...state, userEmail: email, isLogged: true })),
   on(loginError, (state, { error }) => ({ ...state, error })),
   on(logout, (state) => ({ ...state, userEmail: '' }))
 );

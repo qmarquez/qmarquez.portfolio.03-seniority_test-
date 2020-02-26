@@ -18,7 +18,7 @@ export class IsLoggedInGuard implements CanActivate {
 
   canActivate() {
     return this.isLogin$.pipe(
-      map(({ isLoggedIn }) => isLoggedIn || this.router.parseUrl('/login'))
+      map(({ isLogged }) => isLogged || this.router.parseUrl('/login'))
     );
   }
 }
