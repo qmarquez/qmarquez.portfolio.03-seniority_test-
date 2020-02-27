@@ -35,7 +35,12 @@
   </nb-sidebar>
   <nb-layout-column class="colored-column-info">
 
-    <app-mail-list></app-mail-list>
+    <ng-container *ngIf="showDetail; else emailList">
+      <app-mail-detail></app-mail-detail>
+    </ng-container>
+    <ng-template #emailList>
+      <app-mail-list></app-mail-list>
+    </ng-template>
 
   </nb-layout-column>
 </nb-layout>

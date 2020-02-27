@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Mails } from '../../models/mail.interface';
 import { ActivatedRoute } from '@angular/router';
-import { MailService } from '../../services/mail.service';
 
 @Component({
   selector: 'app-mails',
@@ -11,10 +9,21 @@ import { MailService } from '../../services/mail.service';
 export class MailsComponent {
 
   sidebarStatus: string;
+  showDetail: boolean;
 
-  constructor() {
+  constructor(
+    router: ActivatedRoute
+  ) {
     // this should be on store
     this.sidebarStatus = 'compacted';
+    // May the best way to handle this is make a new module and handle routes there
+    router.params.subscribe({
+      next: ({ id }) => {
+        if (id) {
+          this.showDetail = true;
+        }
+      }
+    })
   }
 
   toggleMenu() {

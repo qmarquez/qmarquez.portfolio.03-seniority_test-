@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MailListItemComponent } from './components/mail-list-item/mail-list-item.component';
 import { MailService } from './services/mail.service';
 import { MailListComponent } from './components/mail-list/mail-list.component';
+import { MailDetailComponent } from './components/mail-detail/mail-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MailListComponent } from './components/mail-list/mail-list.component';
     LoginComponent,
     MailsComponent,
     MailListItemComponent,
-    MailListComponent
+    MailListComponent,
+    MailDetailComponent
   ],
   imports: [
     BrowserModule,
