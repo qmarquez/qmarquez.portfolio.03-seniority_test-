@@ -14,12 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IsLoggedInGuard } from './guards/is_logged_in.guard';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MailListItemComponent } from './components/mail-list-item/mail-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MailsComponent
+    MailsComponent,
+    MailListItemComponent
   ],
   imports: [
     BrowserModule,

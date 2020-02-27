@@ -41,7 +41,7 @@
 
     <nb-list nbInfiniteList listenWindowScroll [threshold]="500" (bottomThreshold)="loadNext()">
       <nb-list-item *ngFor="let mail of mails">
-        <app-mail-item [mail]="mail"></app-mail-item>
+        <app-mail-list-item [mail]="mail"></app-mail-list-item>
       </nb-list-item>
     </nb-list>
 
