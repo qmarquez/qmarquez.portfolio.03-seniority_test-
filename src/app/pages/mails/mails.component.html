@@ -34,18 +34,8 @@
     </div>
   </nb-sidebar>
   <nb-layout-column class="colored-column-info">
-    <div>
-      <input nbInput type="text" shape="round" placeholder="search">
-      <nb-icon icon="search-outline" class="search-icon"></nb-icon>
-    </div>
 
-    <ng-container *ngIf="mails.length > 0">
-      <nb-list nbInfiniteList listenWindowScroll [threshold]="200" (bottomThreshold)="loadNext()">
-        <nb-list-item *ngFor="let mail of mails;">
-          <app-mail-list-item [mail]="mail"></app-mail-list-item>
-        </nb-list-item>
-      </nb-list>
-    </ng-container>
+    <app-mail-list></app-mail-list>
 
   </nb-layout-column>
 </nb-layout>

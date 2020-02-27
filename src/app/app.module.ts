@@ -16,13 +16,15 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MailListItemComponent } from './components/mail-list-item/mail-list-item.component';
 import { MailService } from './services/mail.service';
+import { MailListComponent } from './components/mail-list/mail-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MailsComponent,
-    MailListItemComponent
+    MailListItemComponent,
+    MailListComponent
   ],
   imports: [
     BrowserModule,
