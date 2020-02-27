@@ -7,6 +7,9 @@ const publicPath = path.join(__dirname, "..", "public");
 
 const mails_mocks = require('./mails.mock.json');
 
+app.use(express.json());
+app.use(express.static(publicPath));
+
 router.post('/auth/signin', (req, res) => {
   const { email, password } = req.body;
 
@@ -25,8 +28,8 @@ router.post('/auth/signin', (req, res) => {
   return res.status(200).send({ isLogged: true });
 });
 
-router.get(/mails|drafts|sents/ig, (req, res) => {
-  const { page = 0, pagination = 20 } = req.params;
+router.get('/:type', (req, res) => {
+  const { page = 0, pagination = 20 } = req.query;
   const startIndex = page * pagination;
 
   const mails = mails_mocks.slice(startIndex, startIndex + pagination);
@@ -34,10 +37,8 @@ router.get(/mails|drafts|sents/ig, (req, res) => {
   return res.status(200).send(mails);
 });
 
-app.use(express.json());
 
 app.use('/api', router);
 
-app.use(express.static(publicPath));
 
 app.listen(3000, () => console.log('server ready'));
