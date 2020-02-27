@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "dev": "nodemon ./server & ng serve --host 0.0.0.0",
+    "dev": "nodemon ./server --watch ./server & ng serve --host 0.0.0.0",
     "build": "ng build --prod --outputPath=./public --aot=true",
     "test": "ng test",
     "lint": "ng lint",
