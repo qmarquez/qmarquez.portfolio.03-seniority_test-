@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { loginInterface } from '../../reducers/login.reducer';
+import { LoginInterface } from '../../reducers/login.reducer';
 import { AuthService } from '../../services/auth.service';
 import { loginSuccess, loginError } from '../../actions/login.actions';
 import { map } from 'rxjs/operators';
@@ -19,7 +19,7 @@ export class LoginComponent {
   error: Observable<string>;
 
   constructor(
-    private readonly store: Store<{ login: loginInterface }>,
+    private readonly store: Store<{ login: LoginInterface }>,
     private readonly authService: AuthService,
     private readonly router: Router,
     fBuilder: FormBuilder,

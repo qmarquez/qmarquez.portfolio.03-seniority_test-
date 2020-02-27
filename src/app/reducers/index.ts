@@ -6,10 +6,10 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { loginReducer, loginInterface } from './login.reducer';
+import { loginReducer, LoginInterface } from './login.reducer';
 
 export interface State {
-  login: loginInterface
+  login: LoginInterface;
 }
 
 export const reducers: ActionReducerMap<State> = {
