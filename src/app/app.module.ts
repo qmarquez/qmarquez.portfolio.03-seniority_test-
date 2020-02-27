@@ -8,9 +8,8 @@ import { MailsComponent } from './pages/mails/mails.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, initialState } from './reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NebularModule } from './nebular.module';
+import { NbThemeModule, NbSidebarModule } from '@nebular/theme';
+import { NebularModule } from './modules/nebular.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsLoggedInGuard } from './guards/is_logged_in.guard';
 import { AuthService } from './services/auth.service';
@@ -36,9 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
       },
     }),
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule,
-    NbEvaIconsModule,
+    NbThemeModule.forRoot({ name: 'corporate' }),
+    NbSidebarModule.forRoot(),
     NebularModule
   ],
   providers: [
