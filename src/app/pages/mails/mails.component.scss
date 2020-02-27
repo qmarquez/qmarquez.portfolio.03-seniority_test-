@@ -1,0 +1,23 @@
+.keypad {
+  & button {
+    margin-bottom  : 7px;
+    display        : flex;
+    justify-content: space-between;
+  }
+}
+
+.button-collapsed-margin {
+  margin-left: -7px;
+}
+
+.search-icon {
+  margin-left: -30px;
+  cursor     : pointer;
+}
+
+nb-list-item{
+  border-bottom: 1px solid #dedede;
+  &:hover {
+    background-color: #fff;
+  }
+}

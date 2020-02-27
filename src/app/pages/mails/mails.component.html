@@ -1,0 +1,49 @@
+<nb-layout>
+  <nb-sidebar [state]="sidebarStatus" class="colored-column-warning">
+    <nb-sidebar-header class="user-profile">
+      <div>
+        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin" (click)="toggleMenu()">
+          <nb-icon icon="menu-outline"></nb-icon>
+        </button>
+      </div>
+    </nb-sidebar-header>
+    <!-- this isn't the best way to toggle the menu -->
+    <div class="keypad">
+      <ng-container *ngIf="sidebarStatus === 'expanded'; else compacted">
+        <button nbButton fullWidth status="basic" type="button">
+          <nb-icon icon="inbox-outline"></nb-icon> Inbox
+        </button>
+        <button nbButton fullWidth status="basic" type="button">
+          <nb-icon icon="file-outline"></nb-icon> Draft
+        </button>
+        <button nbButton fullWidth status="basic" type="button">
+          <nb-icon icon="paper-plane-outline"></nb-icon> Sent
+        </button>
+      </ng-container>
+      <ng-template #compacted>
+        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin">
+          <nb-icon icon="inbox-outline"></nb-icon>
+        </button>
+        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin">
+          <nb-icon icon="file-outline"></nb-icon>
+        </button>
+        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin">
+          <nb-icon icon="paper-plane-outline"></nb-icon>
+        </button>
+      </ng-template>
+    </div>
+  </nb-sidebar>
+  <nb-layout-column class="colored-column-info">
+    <div>
+      <input nbInput type="text" shape="round" placeholder="search">
+      <nb-icon icon="search-outline" class="search-icon"></nb-icon>
+    </div>
+
+    <nb-list nbInfiniteList listenWindowScroll [threshold]="500" (bottomThreshold)="loadNext()">
+      <nb-list-item *ngFor="let mail of mails">
+        <app-mail-item [mail]="mail"></app-mail-item>
+      </nb-list-item>
+    </nb-list>
+
+  </nb-layout-column>
+</nb-layout>
