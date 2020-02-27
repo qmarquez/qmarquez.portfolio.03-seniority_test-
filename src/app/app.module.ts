@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MailsComponent } from './pages/mails/mails.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers, initialState } from './reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -29,10 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
+      initialState,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true
-      }
+      },
     }),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
