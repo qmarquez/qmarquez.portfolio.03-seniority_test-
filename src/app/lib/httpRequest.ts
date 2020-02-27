@@ -34,10 +34,10 @@ function httpRequest(httpClient: HttpClient, basePath: string) {
 
     const { params } = requestOptions;
     if (params) {
-      const httpParams = new HttpParams;
+      let httpParams = new HttpParams();
       Object.keys(params)
         .forEach(key => {
-          httpParams.set(key, params[key]);
+          httpParams = httpParams.append(key, params[key]);
         });
       options.params = httpParams;
     }
