@@ -10,24 +10,24 @@
     <!-- this isn't the best way to toggle the menu -->
     <div class="keypad">
       <ng-container *ngIf="sidebarStatus === 'expanded'; else compacted">
-        <button nbButton fullWidth status="basic" type="button">
+        <button nbButton fullWidth status="basic" type="button" routerLink="/mails">
           <nb-icon icon="inbox-outline"></nb-icon> Inbox
         </button>
-        <button nbButton fullWidth status="basic" type="button">
+        <button nbButton fullWidth status="basic" type="button" routerLink="/drafts">
           <nb-icon icon="file-outline"></nb-icon> Draft
         </button>
-        <button nbButton fullWidth status="basic" type="button">
+        <button nbButton fullWidth status="basic" type="button" routerLink="/sents">
           <nb-icon icon="paper-plane-outline"></nb-icon> Sent
         </button>
       </ng-container>
       <ng-template #compacted>
-        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin">
+        <button nbButton status="basic" type="button" size="tiny" routerLink="/mails" class="button-collapsed-margin">
           <nb-icon icon="inbox-outline"></nb-icon>
         </button>
-        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin">
+        <button nbButton status="basic" type="button" size="tiny" routerLink="/drafts" class="button-collapsed-margin">
           <nb-icon icon="file-outline"></nb-icon>
         </button>
-        <button nbButton status="basic" type="button" size="tiny" class="button-collapsed-margin">
+        <button nbButton status="basic" type="button" size="tiny" routerLink="/sents" class="button-collapsed-margin">
           <nb-icon icon="paper-plane-outline"></nb-icon>
         </button>
       </ng-template>
@@ -39,11 +39,13 @@
       <nb-icon icon="search-outline" class="search-icon"></nb-icon>
     </div>
 
-    <nb-list nbInfiniteList listenWindowScroll [threshold]="500" (bottomThreshold)="loadNext()">
-      <nb-list-item *ngFor="let mail of mails">
-        <app-mail-list-item [mail]="mail"></app-mail-list-item>
-      </nb-list-item>
-    </nb-list>
+    <ng-container *ngIf="mails.length > 0">
+      <nb-list nbInfiniteList listenWindowScroll [threshold]="200" (bottomThreshold)="loadNext()">
+        <nb-list-item *ngFor="let mail of mails;">
+          <app-mail-list-item [mail]="mail"></app-mail-list-item>
+        </nb-list-item>
+      </nb-list>
+    </ng-container>
 
   </nb-layout-column>
 </nb-layout>

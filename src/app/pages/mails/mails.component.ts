@@ -10,8 +10,11 @@ import { MailService } from '../../services/mail.service';
 })
 export class MailsComponent {
 
+  mailType: string;
+  page: number;
   sidebarStatus: string;
   mails: Mails;
+  loading: boolean;
 
   constructor(
     route: ActivatedRoute,
@@ -19,10 +22,18 @@ export class MailsComponent {
   ) {
     // this should be on store
     this.sidebarStatus = 'compacted';
-    route.params.subscribe({
-      next: ({ mailType }) => this.getMails(mailType)
-    });
 
+    this.loading = false;
+    this.mails = [];
+
+    route.params.subscribe({
+      next: ({ mailType }) => {
+        this.page = 0;
+        this.mailType = mailType;
+        this.mails.splice(0)
+        this.loadNext();
+      }
+    });
   }
 
   toggleMenu() {
@@ -36,12 +47,27 @@ export class MailsComponent {
     }
   }
 
-  getMails(type) {
-    this.mailService.getMails(type);
+  getMails() {
+    console.log(this.page)
+    this.mailService.getMails(this.mailType, this.page)
+      .subscribe({
+        next: mails => {
+          this.page++;
+          this.mails.push(...mails);
+          this.loading = false;
+        },
+        error: error => {
+          console.error('error: ', error);
+          this.loading = false;
+        }
+      });
   }
 
   loadNext() {
-    console.log('asdsa')
+    if (this.loading) { return }
+
+    this.loading = true;
+    this.getMails();
   }
 
 }
