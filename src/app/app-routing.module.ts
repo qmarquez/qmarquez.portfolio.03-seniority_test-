@@ -7,7 +7,7 @@ import { IsLoggedInGuard } from './guards/is_logged_in.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'mails', component: MailsComponent, canActivate: [IsLoggedInGuard] },
+  { path: ':mailType', component: MailsComponent, canActivate: [IsLoggedInGuard] },
   { path: '**', redirectTo: '/mails' }
 ];
 

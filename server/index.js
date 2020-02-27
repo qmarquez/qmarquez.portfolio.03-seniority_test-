@@ -29,7 +29,7 @@ router.get(/mails|drafts|sents/ig, (req, res) => {
   const { page = 0, pagination = 20 } = req.params;
   const startIndex = page * pagination;
 
-  const mails = mails_mocks.slice(startIndex, startIndex + pagination - 1);
+  const mails = mails_mocks.slice(startIndex, startIndex + pagination);
 
   return res.status(200).send(mails);
 });
