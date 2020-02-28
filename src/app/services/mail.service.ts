@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, httpRequest } from '../lib/httpRequest';
 import { HttpClient } from '@angular/common/http';
-import { Mails } from '../models/mail.interface';
+import { Mails, Mail } from '../models/mail.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,14 @@ export class MailService {
       params.q = query;
     }
     return this.httpRequest<Mails>('GET', type, { params });
+  }
+
+  getMail(type: string, id: string) {
+    return this.httpRequest<Mail>('GET', [type, id]);
+  }
+
+  saveMail(type: string, mail: Mail) {
+    return this.httpRequest('POST', type, { body: mail });
   }
 
 }
