@@ -1,1 +1,10 @@
-<p>mail-detail works!</p>
+<form (ngSubmit)="mailFormSubmit()" [formGroup]="mailForm">
+  <input formControlName="to" [attr.readonly]="allowEdit ? null : ''" nbInput fullWidth type="text" placeholder="To">
+  <input formControlName="subject" [attr.readonly]="allowEdit ? null : ''" nbInput fullWidth type="text" placeholder="Subject">
+  <textarea formControlName="body" [attr.readonly]="allowEdit ? null : ''" nbInput fullWidth rows="8" class="mail-body"></textarea>
+  <ng-container *ngIf="allowEdit">
+    <div class="button-container">
+      <button nbButton>Send</button>
+    </div>
+  </ng-container>
+</form>
