@@ -8,7 +8,7 @@ import { MailsComponent } from './pages/mails/mails.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, initialState } from './reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbSidebarModule } from '@nebular/theme';
+import { NbThemeModule, NbCardModule, NbInputModule, NbButtonModule, NbLayoutModule, NbSidebarModule, NbIconModule, NbListModule } from '@nebular/theme';
 import { NebularModule } from './modules/nebular.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsLoggedInGuard } from './guards/is_logged_in.guard';
@@ -18,6 +18,18 @@ import { MailListItemComponent } from './components/mail-list-item/mail-list-ite
 import { MailService } from './services/mail.service';
 import { MailListComponent } from './components/mail-list/mail-list.component';
 import { MailDetailComponent } from './components/mail-detail/mail-detail.component';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+
+const nebularModules = [
+  NbCardModule,
+  NbInputModule,
+  NbButtonModule,
+  NbLayoutModule,
+  NbSidebarModule,
+  NbEvaIconsModule,
+  NbIconModule,
+  NbListModule
+];
 
 @NgModule({
   declarations: [
@@ -44,7 +56,7 @@ import { MailDetailComponent } from './components/mail-detail/mail-detail.compon
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'corporate' }),
     NbSidebarModule.forRoot(),
-    NebularModule
+    ...nebularModules
   ],
   providers: [
     AuthService,
