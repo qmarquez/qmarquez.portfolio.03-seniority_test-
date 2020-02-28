@@ -31,10 +31,11 @@ router.post('/auth/signin', (req, res) => {
 });
 
 router.get('/:type', (req, res) => {
-  const { page = 0, pagination = 20 } = req.query;
+  const { page = 0, pagination = 20, q = '' } = req.query;
   const { type } = req.params;
   const startIndex = page * pagination;
 
+  const queryRx = new RegExp(q, 'ig');
   const repository = {
     mails: mails_mocks,
     drafts: draftsMails,
@@ -43,7 +44,17 @@ router.get('/:type', (req, res) => {
 
   if (!repository) { return res.sendStatus(404) };
 
-  const mails = repository.slice(startIndex, startIndex + pagination);
+  // May i should control if q not come not filter.
+  const mails = repository
+    .filter(({ from, to, cc, name }) => {
+      let match = false;
+      for (const mail of [from, to, cc, name]) {
+        match = queryRx.exec(mail);
+        if (match) { break; }
+      }
+      return match;
+    })
+    .slice(startIndex, startIndex + pagination);
 
   return res.status(200).send(mails);
 });

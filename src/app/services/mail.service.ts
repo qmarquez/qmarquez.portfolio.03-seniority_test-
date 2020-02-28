@@ -16,9 +16,12 @@ export class MailService {
     this.httpRequest = httpRequest(httpClient, '');
   }
 
-  getMails(type: string, page: number) {
-    const params = {
+  getMails(type: string, page: number, query?: string) {
+    const params: any = {
       page: page.toString()
+    };
+    if (query) {
+      params.q = query;
     }
     return this.httpRequest<Mails>('GET', type, { params });
   }

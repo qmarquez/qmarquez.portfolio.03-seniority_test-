@@ -1,6 +1,6 @@
 <div>
-  <input nbInput type="text" shape="round" placeholder="search">
-  <nb-icon icon="search-outline" class="search-icon"></nb-icon>
+  <input #search nbInput type="text" shape="round" placeholder="search" (input)="findQuery(search.value)">
+  <nb-icon icon="search-outline" class="search-icon" (click)="findQuery(search.value)"></nb-icon>
 </div>
 
 <ng-container *ngIf="mails.length > 0">

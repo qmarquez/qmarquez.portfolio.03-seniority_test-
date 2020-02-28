@@ -27,10 +27,10 @@ Dummy email client app
 - [X] On the left, the navigation menu allows switching between the ​Inbox​, ​Drafts ​and ​Sent sections.
 - [X] On the right, a list of emails is displayed according to the current section.
 - [X] The list must initially show 20 messages and have a way to show all messages through pagination or infinite scroll.
-- [ ] While in the ​Inbox ​and ​Sent ​sections, clicking on an email opens the ​View ​screen.
-- [ ] While in the ​Drafts ​section, clicking on a draft opens the ​Compose ​screen.
-- [ ] Clicking the plus button on the bottom right opens the ​Compose ​screen.
-- [ ] Bonus points if the list can be searched by email and name.
+- [X] While in the ​Inbox ​and ​Sent ​sections, clicking on an email opens the ​View ​screen.
+- [X] While in the ​Drafts ​section, clicking on a draft opens the ​Compose ​screen.
+- [X] Clicking the plus button on the bottom right opens the ​Compose ​screen.
+- [X] Bonus points if the list can be searched by email and name.
 
 ### View/compose
 

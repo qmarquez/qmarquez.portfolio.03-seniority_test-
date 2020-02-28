@@ -11,6 +11,8 @@ import { MailService } from '../../services/mail.service';
 export class MailListComponent {
   mailType: string;
   page: number;
+  query: string;
+  delaySearch: { timeoutId: number, delayToFind: number };
 
   mails: Mails;
   loading: boolean;
@@ -19,23 +21,23 @@ export class MailListComponent {
     route: ActivatedRoute,
     private readonly mailService: MailService
   ) {
-
     this.loading = false;
     this.mails = [];
+    this.query = undefined;
+    this.delaySearch = { timeoutId: undefined, delayToFind: 300 };
 
     route.params.subscribe({
       next: ({ mailType }) => {
         this.page = 0;
         this.mailType = mailType;
-        this.mails.splice(0)
+        this.mails.splice(0);
         this.loadNext();
       }
     });
   }
 
   getMails() {
-    console.log(this.page)
-    this.mailService.getMails(this.mailType, this.page)
+    this.mailService.getMails(this.mailType, this.page, this.query)
       .subscribe({
         next: mails => {
           this.page++;
@@ -50,9 +52,21 @@ export class MailListComponent {
   }
 
   loadNext() {
-    if (this.loading) { return }
+    if (this.loading) { return; }
 
     this.loading = true;
     this.getMails();
+  }
+
+  findQuery(value: string) {
+    if (this.delaySearch.timeoutId) {
+      window.clearTimeout(this.delaySearch.timeoutId);
+    }
+    this.delaySearch.timeoutId = window.setTimeout(() => {
+      this.page = 0;
+      this.mails.splice(0);
+      this.query = value;
+      this.getMails();
+    }, this.delaySearch.delayToFind);
   }
 }
