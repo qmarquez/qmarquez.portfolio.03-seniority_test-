@@ -2,6 +2,8 @@
 
 Dummy email client app
 
+Heroku app: [dummy_mailer](https://dummy-mailer.herokuapp.com/)
+
 NOTE: i'm counscient that i use through all app magic strings for draft, sent and mail types.
 
 ## Test state

@@ -10,7 +10,6 @@ const sentMails = [];
 const draftMails = [];
 
 app.use(express.json());
-app.use(express.static(publicPath));
 
 router.post('/auth/signin', (req, res) => {
   const { email, password } = req.body;
@@ -112,6 +111,7 @@ router.post('/sent', (req, res) => {
 });
 
 app.use('/api', router);
+app.use(express.static(publicPath));
 
 
-app.listen(3000, () => console.log('server ready'));
+app.listen(process.env.PORT || 3000, () => console.log('server ready'));
