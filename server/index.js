@@ -6,8 +6,8 @@ const router = express.Router();
 const publicPath = path.join(__dirname, "..", "public");
 
 const mails_mocks = require('./mails.mock.json');
-const sentsMails = [];
-const draftsMails = [];
+const sentMails = [];
+const draftMails = [];
 
 app.use(express.json());
 app.use(express.static(publicPath));
@@ -38,8 +38,8 @@ router.get('/:type', (req, res) => {
   const queryRx = new RegExp(q, 'ig');
   const repository = {
     mails: mails_mocks,
-    drafts: draftsMails,
-    sents: sentsMails
+    drafts: draftMails,
+    sents: sentMails
   }[type];
 
   if (!repository) { return res.sendStatus(404) };
@@ -64,8 +64,8 @@ router.get('/:type/:id', (req, res) => {
 
   const repository = {
     mail: mails_mocks,
-    draft: draftsMails,
-    sent: sentsMails
+    draft: draftMails,
+    sent: sentMails
   }[type];
 
   if (!repository) { return res.sendStatus(404) };
@@ -75,21 +75,40 @@ router.get('/:type/:id', (req, res) => {
   res.send(mail);
 });
 
-router.post('/:type', (req, res) => {
+router.post('/draft', (req, res) => {
   const mail = req.body;
-  const { type } = req.params;
 
-  const repository = {
-    sent: sentsMails,
-    draft: draftsMails
-  }[type];
+  if (mail.id) {
+    const savedMail = draftMails.find(({ id }) => id === mail.id);
 
-  if (!repository) { return res.sendStatus(404) };
+    if (!savedMail) { return res.sendStatus(404); }
 
-  mail.id = repository.length;
-  repository.push(mail);
+    savedMail.to = mail.to;
+    savedMail.subject = mail.subject;
+    savedMail.body = mail.body
+  } else {
+    mail.id = `${draftMails.length}`;
+    draftMails.push(mail);
+  }
 
-  return res.sendStatus(200);
+  return res.status(201).send({ id: mail.id });
+});
+
+router.post('/sent', (req, res) => {
+  const mail = req.body;
+
+  const draftMail = draftMails.findIndex(({ id }) => id === mail.id);
+
+  if (draftMail === -1) {
+    return res.sendStatus(400);
+  }
+
+  draftMails.splice(draftMail, 1);
+
+  mail.id = `${sentMails.length}`;
+  sentMails.push(mail);
+
+  return res.status(201).send({ id: mail.id });
 });
 
 app.use('/api', router);
