@@ -2,6 +2,8 @@
 
 Dummy email client app
 
+NOTE: i'm counscient that i use through all app magic strings for draft, sent and mail types.
+
 ## Test state
 
 ### General
@@ -13,7 +15,7 @@ Dummy email client app
 - [ ] Use an TSLint config and a npm command to lint all files.
 - [X] Have a README file.
 - [X] Be stored in GitHub or GitLab.
-- [ ] Be hosted in ​Heroku​, ​Now ​or ​AWS
+- [X] Be hosted in ​Heroku​, ​Now ​or ​AWS
 
 ### Login screen
 
@@ -34,13 +36,13 @@ Dummy email client app
 
 ### View/compose
 
-- [ ] On the left, the navigation menu allows switching between the ​Inbox​, ​Drafts ​and ​Sent sections of the ​Main ​screen.
-- [ ] On the right, the screen contains a form with the fields: ​To​, ​Subject ​and ​Body​.
-- [ ] In the ​View ​screen, all three fields are read only and the Send button is hidden.
+- [X] On the left, the navigation menu allows switching between the ​Inbox​, ​Drafts ​and ​Sent sections of the ​Main ​screen.
+- [X] On the right, the screen contains a form with the fields: ​To​, ​Subject ​and ​Body​.
+- [X] In the ​View ​screen, all three fields are read only and the Send button is hidden.
 - [ ] The ​To ​field is auto-completed from the email data.
-- [ ] While composing an email, the app must save a draft every 10 seconds.
-- [ ] The ​Drafts ​section of the ​Main ​screen must only show the last draft of every unsent message.
-- [ ] After clicking the send button the message should appear in the ​Sent ​section and disappear from the ​Drafts ​section.
+- [X] While composing an email, the app must save a draft every 10 seconds.
+- [X] The ​Drafts ​section of the ​Main ​screen must only show the last draft of every unsent message.
+- [X] After clicking the send button the message should appear in the ​Sent ​section and disappear from the ​Drafts ​section.
 
 ### Bonus
 
