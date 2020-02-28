@@ -25,6 +25,7 @@
     "@nebular/theme": "^4.6.0",
     "@ngrx/store": "^8.6.0",
     "@types/pluralize": "0.0.29",
+    "cors": "^2.8.5",
     "eva-icons": "^1.1.2",
     "express": "^4.17.1",
     "pluralize": "^8.0.0",

@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path')
+const cors = require('cors');
 
 const app = express();
 const router = express.Router();
@@ -10,6 +11,13 @@ const sentMails = [];
 const draftMails = [];
 
 app.use(express.json());
+app.use(cors());
+
+router.options('/api/*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.sendStatus(200);
+});
 
 router.post('/auth/signin', (req, res) => {
   const { email, password } = req.body;
