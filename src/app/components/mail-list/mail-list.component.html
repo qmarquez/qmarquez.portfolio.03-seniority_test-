@@ -5,8 +5,8 @@
 
 <ng-container *ngIf="mails.length > 0">
   <nb-list nbInfiniteList listenWindowScroll [threshold]="200" (bottomThreshold)="loadNext()">
-    <nb-list-item *ngFor="let mail of mails;">
-      <app-mail-list-item [mail]="mail" routerLink="/mail/{{mail.id}}"></app-mail-list-item>
+    <nb-list-item *ngFor="let mail of mails;" routerLink="/{{singularType}}/{{mail.id}}">
+      <app-mail-list-item [mail]="mail"></app-mail-list-item>
     </nb-list-item>
   </nb-list>
 </ng-container>

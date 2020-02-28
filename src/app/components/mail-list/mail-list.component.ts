@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Mails } from '../../models/mail.interface';
 import { MailService } from '../../services/mail.service';
+import * as pluralize from 'pluralize';
 
 @Component({
   selector: 'app-mail-list',
@@ -16,6 +17,10 @@ export class MailListComponent {
 
   mails: Mails;
   loading: boolean;
+
+  get singularType() {
+    return pluralize.singular(this.mailType);
+  }
 
   constructor(
     route: ActivatedRoute,

@@ -9,8 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, initialState } from './reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbCardModule, NbInputModule, NbButtonModule, NbLayoutModule, NbSidebarModule, NbIconModule, NbListModule } from '@nebular/theme';
-import { NebularModule } from './modules/nebular.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IsLoggedInGuard } from './guards/is_logged_in.guard';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -43,6 +42,7 @@ const nebularModules = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {
